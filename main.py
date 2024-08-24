@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from typing import Union
-
+import httpx
 from openAI.client import OpenAIClient
 from rules.rules import CLOSE_HAND, OPEN_HAND, PINCH_GRIP
+import requests
 
 app = FastAPI()
 
@@ -43,11 +44,32 @@ def read_root():
     return {"response": rule}
 
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
-@app.post("/train-data")
+@app.get("/test")
 def train_data(data: dict):
-    return {"data": data}
+    url = "http://10.67.10.73:8080/data"
+    headers = {
+        "Content-Type": "application/json",
+    }
+    data = [
+        {"engine": "upper_thumb", "value": 1},
+        {"engine": "lower_thumb", "value": 0.8},
+        {"engine": "index_finger", "value": 0.50},
+        {"engine": "middle_finger", "value": 0},
+        {"engine": "ring_finger", "value": 0},
+        {"engine": "pinky_finger", "value": 0},
+    ]
+
+    # Convertir la lista de diccionarios en una cadena JSON
+    engine_status_list_json = {"engine_status_list_json": data}
+
+    # Incluirla en los parámetros de la consulta en la URL
+    # params = {
+    #     "engine_status_list": engine_status_list_json
+    # }
+
+    response = requests.post(url, headers=headers, data=engine_status_list_json)
+    # response = httpx.post(url, headers=headers, data=engine_status_list_json)
+    return {"external_response": response.json()}
+
 
