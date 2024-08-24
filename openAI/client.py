@@ -17,7 +17,7 @@ class OpenAIClient:
         message_content = chat_completion.choices[0].message.content
         return message_content
     
-    def process_image(self):
+    def process_image(self, prompt):
         image_path = './images/puño.jpeg'
         base64_image = encode_image(image_path)
         response = openai.chat.completions.create(
@@ -26,7 +26,7 @@ class OpenAIClient:
                 {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "En una imagen donde se muestra una mano con los dedos extendidos, ¿qué movimiento esperas que haga la mano? Si la mano se cierra, devuelve 1. Si la mano se abre, devuelve 0. Si es un movimiento de pinzas, devuelve 2."},
+                    {"type": "text", "text": prompt},
                     {
                     "type": "image_url",
                     "image_url": {
