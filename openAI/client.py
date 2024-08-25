@@ -20,6 +20,7 @@ class OpenAIClient:
     def process_image(self, prompt):
         image_path = './images/puño.jpeg'
         base64_image = encode_image(image_path)
+
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -31,6 +32,29 @@ class OpenAIClient:
                     "type": "image_url",
                     "image_url": {
                         "url": f"data:image/jpeg;base64,{base64_image}",
+                    },
+                    },
+                ],
+                }
+            ],
+            max_tokens=300,
+        )
+        print(response)
+
+        # return response['choices'][0]['message']['content']
+
+    def process_image2(self, prompt, image_url):
+        response = openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": image_url,
                     },
                     },
                 ],
