@@ -184,36 +184,44 @@ OPEN_HAND = [
 #     {{"engine": "lower_thumb", "value": 0}},
 #     {{"engine": "upper_thumb", "value": 0}}
 # ]
-PIECE_HAND = [
+PEACE_HAND = [
 #     {{"engine": "index_finger", "value": 0}},
 #     {{"engine": "middle_finger", "value": 0}},
 #     {{"engine": "ring_finger", "value": 1}},
 #     {{"engine": "pinky_finger", "value": 1}},
 #     {{"engine": "lower_thumb", "value": 1}},
 #     {{"engine": "upper_thumb", "value": 1}},
-MOVEMENT_HAND = [
-#     {{"engine": "index_finger", "value": 1}},
-#     {{"engine": "middle_finger", "value": 0}},
-#     {{"engine": "ring_finger", "value": 0}},
-#     {{"engine": "pinky_finger", "value": 0}},
-#     {{"engine": "lower_thumb", "value": 0}},
-#     {{"engine": "upper_thumb", "value": 0}}
-# ]
 ONE_COUNTER_CLOCKWISE = [
-#     {{"engine": "index_finger", "value": 1}},
-#     {{"engine": "middle_finger", "value": 0}},
-#     {{"engine": "ring_finger", "value": 0}},
-#     {{"engine": "pinky_finger", "value": 0}},
-#     {{"engine": "lower_thumb", "value": 0}},
-#     {{"engine": "upper_thumb", "value": 0}}
+#     {{"engine": "index_finger", "value": 0}},
+#     {{"engine": "middle_finger", "value": 1}},
+#     {{"engine": "ring_finger", "value": 1}},
+#     {{"engine": "pinky_finger", "value": 1}},
+#     {{"engine": "lower_thumb", "value": 1}},
+#     {{"engine": "upper_thumb", "value": 1}}
 # ]
 TWO_COUNTER_CLOCKWISE = [
-#     {{"engine": "index_finger", "value": 1}},
+#     {{"engine": "index_finger", "value": 0}},
+#     {{"engine": "middle_finger", "value": 0}},
+#     {{"engine": "ring_finger", "value": 1}},
+#     {{"engine": "pinky_finger", "value": 1}},
+#     {{"engine": "lower_thumb", "value": 1}},
+#     {{"engine": "upper_thumb", "value": 1}}
+# ]
+THIRD_COUNTER_CLOCKWISE = [
+#     {{"engine": "index_finger", "value": 0}},
+#     {{"engine": "middle_finger", "value": 0}},
+#     {{"engine": "ring_finger", "value": 0}},
+#     {{"engine": "pinky_finger", "value": 1}},
+#     {{"engine": "lower_thumb", "value": 1}},
+#     {{"engine": "upper_thumb", "value": 1}}
+# ]
+METAL_HAND = [
+#     {{"engine": "index_finger", "value": 0}},
 #     {{"engine": "middle_finger", "value": 1}},
 #     {{"engine": "ring_finger", "value": 0}},
 #     {{"engine": "pinky_finger", "value": 0}},
-#     {{"engine": "lower_thumb", "value": 0}},
-#     {{"engine": "upper_thumb", "value": 0}}
+#     {{"engine": "lower_thumb", "value": 1}},
+#     {{"engine": "upper_thumb", "value": 1}}
 # ]
 
 Examples of Hand Movements Through Objects or Symbols:

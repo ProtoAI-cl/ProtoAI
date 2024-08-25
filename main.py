@@ -34,7 +34,7 @@ def upload_image(request: image):
     #     return {"error": "API key not found"}
     
     if request.data:
-        client = OpenAIClient(api_key="your-api-key")
+        client = OpenAIClient(api_key="")
         prompt = IMAGE_PROMPT
         image_data = request.data
         response = client.process_image2(prompt,image_data)
