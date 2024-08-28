@@ -6,7 +6,9 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 
-from promts.promts import HAND_PROMT, HAND_PROMT_2, HAND_PROMT_3
+from promts.promts import HAND_PROMT_3
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -19,6 +21,9 @@ app.add_middleware(
 )
 
 IMAGE_PROMPT = HAND_PROMT_3
+MODEL = "gpt-4o-mini"
+
+API_KEY = os.getenv("OPENAI_API_KEY")
 
 @app.get("/")
 def ping():
@@ -29,15 +34,11 @@ class image(BaseModel):
 
 @app.post("/upload-image")
 def upload_image(request: image):
-    # api_key = os.getenv("OPENAI_API_KEY")
-    # if not api_key:
-    #     return {"error": "API key not found"}
-    
     if request.data:
-        client = OpenAIClient(api_key="")
+        client = OpenAIClient(api_key=API_KEY)
         prompt = IMAGE_PROMPT
         image_data = request.data
-        response = client.process_image2(prompt,image_data)
+        response = client.process_image(prompt,MODEL,image_data)
         cleaned_response = response.replace("```json", "").replace("```", "").strip()
         print(cleaned_response)
         post_data(cleaned_response)
