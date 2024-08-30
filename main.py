@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 
-from promts.promts import HAND_PROMT_3
+from prompts.prompts import HAND_PROMPT_3
 
 load_dotenv()
 
@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-IMAGE_PROMPT = HAND_PROMT_3
+IMAGE_PROMPT = HAND_PROMPT_3
 MODEL = "gpt-4o-mini"
 
 API_KEY = os.getenv("OPENAI_API_KEY")
