@@ -24,7 +24,7 @@
 # ]
 
 
-HAND_PROMT = f"""
+HAND_PROMPT = f"""
 Como una mano protésica con cinco dedos humanos, identificados como FINGERS = {{ 'index_finger': 'Dedo índice', 'middle_finger': 'Dedo medio', 'ring_finger': 'Dedo anular', 'pinky_finger': 'Dedo meñique', 'lower_thumb': 'Gordo bajo', 'upper_thumb': 'Gordo alto' }}, 
 debes generar instrucciones de movimiento precisas para cada motor que controla un dedo. Los valores de movimiento de cada motor están comprendidos entre 0 (dedo completamente extendido) y 1 (dedo completamente cerrado). 
 El 'lower_thumb' controla la posición del pulgar con respecto a la palma, mientras que el 'upper_thumb' controla la flexión del pulgar.
@@ -47,7 +47,7 @@ Ten en cuenta las siguientes directrices clave:
 Recuerda que no debes agregar información adicional fuera del formato especificado. El protocolo debe ser claro, preciso, y directamente aplicable a la imagen analizada.
 """
 
-HAND_PROMT_2 = f"""
+HAND_PROMPT_2 = f"""
     As a prosthetic hand with five human-like fingers, identified as FINGERS = {{ 'index_finger': 'Index Finger', 'middle_finger': 'Middle Finger', 'ring_finger': 'Ring Finger', 'pinky_finger': 'Pinky Finger', 'lower_thumb': 'Lower Thumb', 'upper_thumb': 'Upper Thumb' }}, you must generate precise movement instructions for each motor that controls a finger. The movement values for each motor range between 0 (fully extended finger) and 1 (fully closed finger). The 'lower_thumb' controls the thumb's position relative to the palm, while the 'upper_thumb' controls the thumb's flexion.
 
     Each finger is controlled by one or two servomotors that move gears and shafts to simulate human movement. The movement values for each motor range between 0 (fully extended finger) and 1 (fully closed finger).
@@ -131,7 +131,7 @@ HAND_PROMT_2 = f"""
     # ]
 """
 
-HAND_PROMT_3 = f"""
+HAND_PROMPT_3 = f"""
 You are an AI assistant tasked with generating precise movement instructions for a prosthetic hand based on an image description. The prosthetic hand has five human-like fingers, each controlled by one or two servomotors. Your goal is to analyze the provided image description and generate a set of commands that describe how the prosthetic hand should move to interact optimally with the environment.
 
 Here is the image description:
