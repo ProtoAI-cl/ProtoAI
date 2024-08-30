@@ -24,7 +24,7 @@ IMAGE_PROMPT = HAND_PROMT_3
 MODEL = "gpt-4o-mini"
 
 API_KEY = os.getenv("OPENAI_API_KEY")
-RASP_API = os.getenv("RASP_API")
+RASP_API_URL = os.getenv("RASP_API_URL")
 
 @app.get("/")
 def ping():
@@ -46,7 +46,7 @@ def upload_image(request: image):
         return {"response": cleaned_response}
     
 def post_data(instructions):
-    url = RASP_API
+    url = RASP_API_URL
     headers = {"Content-Type": "application/json"}
 
     payload = {"data": instructions}
