@@ -1,7 +1,8 @@
 import os
 import sys
-import scipy.io
+
 import firebase_admin
+import scipy.io
 from firebase_admin import credentials, firestore
 
 cred = credentials.Certificate("credentials/credentials.json")
@@ -12,18 +13,20 @@ DATASETS = {
     "db1": {
         "folder": "./utils/ninaproDB1",
         "collection": "emg_signals",
-        "source": "DB1"
+        "source": "DB1",
     },
     "db2": {
         "folder": "./utils/ninaproDB2",
         "collection": "emg_signals_db2",
-        "source": "DB2"
-    }
+        "source": "DB2",
+    },
 }
 
 dataset_key = sys.argv[1] if len(sys.argv) > 1 else "db1"
 if dataset_key not in DATASETS:
-    print(f"❌ Dataset '{dataset_key}' is not supported. Use one of: {list(DATASETS.keys())}")
+    print(
+        f"❌ Dataset '{dataset_key}' is not supported. Use one of: {list(DATASETS.keys())}"
+    )
     sys.exit(1)
 
 folder_path = DATASETS[dataset_key]["folder"]
@@ -52,17 +55,26 @@ for filename in os.listdir(folder_path):
 
             emg_by_channel = (
                 {f"ch{i}": emg_trunc[:, i].tolist() for i in range(emg_trunc.shape[1])}
-                if emg_trunc is not None else {}
+                if emg_trunc is not None
+                else {}
             )
 
             glove_by_sensor = (
-                {f"sensor{i}": glove_trunc[:, i].tolist() for i in range(glove_trunc.shape[1])}
-                if glove_trunc is not None else {}
+                {
+                    f"sensor{i}": glove_trunc[:, i].tolist()
+                    for i in range(glove_trunc.shape[1])
+                }
+                if glove_trunc is not None
+                else {}
             )
 
             force_by_channel = (
-                {f"f{i}": force_trunc[:, i].tolist() for i in range(force_trunc.shape[1])}
-                if force_trunc is not None else {}
+                {
+                    f"f{i}": force_trunc[:, i].tolist()
+                    for i in range(force_trunc.shape[1])
+                }
+                if force_trunc is not None
+                else {}
             )
 
             doc_data = {
@@ -72,9 +84,15 @@ for filename in os.listdir(folder_path):
                 "emg_by_channel": emg_by_channel,
                 "glove": glove_by_sensor,
                 "force": force_by_channel,
-                "stimulus": stimulus[:100].flatten().tolist() if stimulus is not None else [],
-                "restimulus": restimulus[:100].flatten().tolist() if restimulus is not None else [],
-                "source": SOURCE
+                "stimulus": (
+                    stimulus[:100].flatten().tolist() if stimulus is not None else []
+                ),
+                "restimulus": (
+                    restimulus[:100].flatten().tolist()
+                    if restimulus is not None
+                    else []
+                ),
+                "source": SOURCE,
             }
 
             doc_id = filename.replace(".mat", "")
